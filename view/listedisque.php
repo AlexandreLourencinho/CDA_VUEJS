@@ -10,11 +10,11 @@ $crud = new cruddisque($conn);
 //foreach ($resultat as $disc) {
 
 
-//if(isset($_GET))
-//{
+if(isset($_GET['titre']))
+{
 $resultat = json_encode($crud->getonerecord($_GET['titre']));
 echo $resultat;
-//}
+}
 //if(isset($_POST))
 //{
 //    return json_encode($crud->getonerecord($_GET['titre']));
