@@ -1,7 +1,7 @@
 <?php
 
 
-require $_SERVER['DOCUMENT_ROOT']."/controller/listedisquecontroller.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/controller/listedisquecontroller.php";
 $conn = new db_records();
 $crud = new cruddisque($conn);
 //$resultat = $crud->getrecord();
@@ -10,16 +10,22 @@ $crud = new cruddisque($conn);
 //foreach ($resultat as $disc) {
 
 
-if(isset($_GET['titre']))
-{
-$resultat = json_encode($crud->getonerecord($_GET['titre']));
-echo $resultat;
+if (isset($_GET['titre'])) {
+
+    echo json_encode($crud->getonerecord($_GET['titre']));
 }
 //if(isset($_POST))
 //{
 //    return json_encode($crud->getonerecord($_GET['titre']));
 //}
-    ?>
+
+
+if (isset($_POST['disc_id'])) {
+    $resultat = $crud->getdetails($_POST['disc_id']);
+    echo json_encode($resultat);
+}
+
+?>
 
 
 

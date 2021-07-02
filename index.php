@@ -317,7 +317,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/template/header.php";
     }
 </style>
 
-<div id="app">            <button class="btn btn-primary" @click="btn_click" v-show="affichage">{{ message }}</button>
+<div id="app">
+    <button class="btn btn-primary" @click="btn_click" v-show="affichage">{{ message }}</button>
     <button class="btn btn-primary" @click="btn_click" v-show="affich">{{ messagee }}</button>
     <div class="d-flex justify-content-start">
         <div v-show="affichage" class="d-flex flex-column col-6">
@@ -325,8 +326,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/template/header.php";
 
             <div class="d-flex flex-row col-12 ">
                 <div id="label1" v-show="affichage"></div>
-                <div id="label2" class="border border-dark" v-show="affichage" ></div>
-                <div id="label3" v-show="affichage" ></div>
+                <div id="label2" class="border border-dark" v-show="affichage"></div>
+                <div id="label3" v-show="affichage"></div>
             </div>
         </div>
     </div>
@@ -335,9 +336,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/template/header.php";
             <p v-show="affich">{{ messagee }}</p>
 
             <div class="d-flex flex-row col-12">
-                <div id="label4" v-show="affich" ></div>
-<!--                <div id="label5" v-show="affich" ></div>-->
-                <div id="label6" v-show="affich" ></div>
+                <div id="label4" v-show="affich"></div>
+                <!--                <div id="label5" v-show="affich" ></div>-->
+                <div id="label6" v-show="affich"></div>
             </div>
         </div>
     </div>
@@ -365,9 +366,49 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/template/header.php";
         }
     });
 </script>
+<div id="testpost">
+    <input type="number" v-model="trucm">
+    <button @click="clickbtnn"> test</button>
 
-
+</div>
+<script>
+    const azertyuii = new Vue({
+        el:'#testpost',
+        data:{
+            trucm:0
+        },
+        methods : {
+            // clickbtnn : function(evt){
+            //     axios({
+            //         method:'post',
+            //         url:'/view/listedisque.php',
+            //         data:{
+            //             id:this.trucm
+            //         }
+            //     }).then(function (response){
+            //         console.log(response.data);
+            //     })
+            // }
+            clickbtnn : function(event){
+                axios.post('/view/listedisque.php', {
+                    disc_id: this.trucm
+                })
+                    .then(function (response) {
+                        console.log(response.data);
+                    })
+            }
+        }
+    })
+    // axios.get("/view/listedisque.php/", {params: {id: this.trucm}}).then(response => {
+    //     console.log(response.data);
+</script>
+<!--// azertyui.nom = response.data[0] != null ? response.data[0].disc_picture : 'fuck.jpg';-->
+<!--// this.alt = response.data[0] != null ? 'image de ' + response.data[0].disc_picture : 'y\'a pas ce dique!';-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <?php
+//require $_SERVER['DOCUMENT_ROOT']."/controller/listedisquecontroller.php";
+//$con = new db_records();
+//$crud = new cruddisque($con);
+//var_dump($crud->getdetails($_POST['']));
 include_once $_SERVER['DOCUMENT_ROOT'] . "/template/footer.php";
 ?>

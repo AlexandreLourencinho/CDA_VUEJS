@@ -30,5 +30,13 @@ class cruddisque
     }
 
 
+    public function getdetails($id){
+        $requete = $this->db->prepare('SELECT * FROM record.disc WHERE disc.disc_id=:id');
+        $requete->bindValue(':id',$id);
+        $requete->execute();
+        return $requete->fetch(PDO::FETCH_OBJ);
+    }
+
+
 
 }
