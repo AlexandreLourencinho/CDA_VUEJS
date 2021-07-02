@@ -20,8 +20,8 @@ if (isset($_GET['titre'])) {
 //}
 
 
-if (isset($_POST['disc_id'])) {
-    $resultat = $crud->getdetails($_POST['disc_id']);
+if (isset($_POST['discid'])) {
+    $resultat = $crud->getdetails($_POST['discid']);
     echo json_encode($resultat);
 }
 

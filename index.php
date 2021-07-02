@@ -391,7 +391,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/template/header.php";
             // }
             clickbtnn : function(event){
                 axios.post('/view/listedisque.php', {
-                    disc_id: this.trucm
+                    discid: azertyuii.trucm
                 })
                     .then(function (response) {
                         console.log(response.data);
